@@ -1,7 +1,0 @@
-== Process using Kotlin DSL
-
-=== Create the process
-
-image::loan-request.png[canvas,size=contain]
-
-
