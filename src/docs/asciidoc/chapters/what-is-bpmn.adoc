@@ -1,14 +1,13 @@
-== Why a DSL for Processes
+== Process modeling pre-requisite
 
 === Pre-requisite: BPMN in 2 minutes!
 
 image::BPMN-logo.svg[width=60%,height=60%]
 
 
-=== Pre-requisite: BPMN in 2 minutes!
+=== BPMN Process definition
 
 image::BPMN-Order-Process-for-Pizza.png[width=60%,height=60%]
 
 
-=== 
 

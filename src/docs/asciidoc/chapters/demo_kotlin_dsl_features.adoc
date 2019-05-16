@@ -1,0 +1,194 @@
+== Kotlin Features for DSL
+
+== Function literals with receiver
+
+[source,kotlin]
+----
+fun html(init: HTML.() -> Unit): HTML {
+    val html = HTML()  // create the receiver object
+    html.init()        // pass the receiver object to the lambda
+    return html
+}
+
+----
+
+[%notitle]
+=== Function literals with receiver
+
+image::function-literal-with-receiver.svg[canvas,size=contain]
+
+
+
+== @DslMarker
+
+
+[source,kotlin]
+----
+@DslMarker
+annotation class ProcessDSLMarker
+----
+
+
+[source,kotlin]
+----
+html {
+    head {
+        head {} // should be forbidden
+    }
+    // ...
+}
+----
+
+
+[%notitle]
+=== @DslMarker
+
+[source,md]
+----
+The general rule:
+- an implicit receiver may *belong to a DSL @X* 
+    if marked with a corresponding DSL marker annotation
+- two implicit receivers of the same DSL 
+    are not accessible in the same scope
+- the closest one wins
+- other available receivers are resolved as usual,
+     but if the resulting resolved call binds to such a receiver,
+     it's a compilation error
+----
+
+== Expression body
+
+
+[source,kotlin]
+----
+fun sum(a: Int, b: Int) = a + b
+----
+
+[%notitle]
+=== Expression body
+
+[source,kotlin]
+----
+fun data(init: DataContainer.() -> Unit) {
+    DataContainer(builder).init()
+}
+----
+
+becomes
+
+[source,kotlin]
+----
+fun data(init: DataContainer.() -> Unit) = DataContainer(builder).init()
+----
+
+== Default arguments
+
+
+[source,kotlin]
+----
+// Bad
+fun foo() = foo("a")
+fun foo(a: String) { ... }
+
+// Good
+fun foo(a: String = "a") { ... }
+----
+
+[%notitle]
+=== Default arguments
+
+
+[source,kotlin]
+----
+automaticTask("name"){
+}
+----
+
+becomes
+[source,kotlin]
+----
+automaticTask("name)
+----
+
+
+== Infix functions
+
+
+[source,kotlin]
+----
+infix fun Int.shl(x: Int): Int { ... }
+
+// calling the function using the infix notation
+1 shl 2
+
+// is the same as
+1.shl(2)
+----
+
+[%notitle]
+=== Infix functions
+
+[source,kotlin]
+----
+text("type").describedAs("type of the loan")
+----
+
+becomes
+
+[source,kotlin]
+----
+text("type") describedAs "type of the loan"
+----
+
+
+== Extension function
+
+
+[source,kotlin]
+----
+fun MutableList<Int>.swap(index1: Int, index2: Int) {
+    val tmp = this[index1] // 'this' corresponds to the list
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
+----
+
+[%notitle]
+=== Extension function
+
+[source,kotlin]
+----
+actor("requester") mappedToUser "john"
+----
+
+becomes
+
+[source,kotlin]
+----
+"requester" mappedToUser "john"
+----
+
+
+== Property with getter
+
+
+[source,kotlin]
+----
+val isEmpty: Boolean
+    get() = this.size == 0
+----
+
+[%notitle]
+=== Property with getter
+
+[source,kotlin]
+----
+text("type") describedAs "type of the loan"
+----
+
+becomes
+
+[source,kotlin]
+----
+text named "type" describedAs "type of the loan"
+----

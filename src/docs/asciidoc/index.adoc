@@ -31,71 +31,72 @@ Baptiste Mesta (@baptistemesta) - Bonitasoft
 include::chapters/01-bonita-presentation.adoc[]
 
 
-// What is a DSL
+// what is bpmn
 
-include::chapters/what-is-a-dsl.adoc[]
-
-
-
-//A dsl for processes
-
-include::chapters/why-a-dsl-for-processes.adoc[]
+include::chapters/what-is-bpmn.adoc[]
 
 
-// Prerequisites: 
+// how we develop process currently
+
 include::chapters/03-the-use-case.adoc[]
 
 include::chapters/04-using-studio.adoc[]
 
-
-// DSL for processes
 include::chapters/05-using-java-api.adoc[]
+
+// we need a DSL
+
+include::chapters/what-is-a-dsl.adoc[]
+
 
 include::chapters/07-kotlin-dsl.adoc[]
 
+
 include::chapters/08-using-kotlin-dsl.adoc[]
 
-
-include::chapters/why-using-a-dsl.adoc[]
-
-
-// execute this dsl
-
-//   first need a running bpm execution engine
-
-include::chapters/06-embedded-engine.adoc[]
-
-// demo run it
+include::chapters/demo_kotlin_dsl_features.adoc[]
 
 
-//  trash it: include::chapters/02-bonita-platform.adoc[]
 
 // Extensible DSL: use extension function of kotlin
 
+include::chapters/dynamic-dsl.adoc[]
+
+include::chapters/dsl-as-script.adoc[]
+
+include::chapters/why-using-a-dsl.adoc[]
+
+include::chapters/feedbacks.adoc[]
 
 
 
-
-include::chapters/10-connect-platform.adoc[]
-
-
-== Conclusion
+== Conclusion (1/2)
 
 [%step]
 * Kotlin icon:heart[] DSL
-* Integrate a BPM execution engine is not hard anymore 
+* A nice way to learn Kotlin
+* Easy to write DSL
+
+
+=== Conclusion (2/2)
+
+[%step]
+* An other way to write our business logic
 * Processes as code is an option for small/medium ones
 * Feedback on the DSL are welcome! (@experimental)
 
-=== Thank you
+== Thank you
 image::end.png[background, size=cover]
 
 link:https://www.bonitasoft.com/downloads[bonitasoft.com/downloads]
 
 link:https://baptistemesta.github.io/process-kotlin-dsl-slides[baptistemesta.github.io/process-kotlin-dsl-slides]
 
-link:https://github.com/baptistemesta/process-kotlin-dsl-request-loan[github.com/baptistemesta/process-kotlin-dsl-request-loan]
+link:https://github.com/bonitasoft-labs/process-kotlin-dsl-request-loan[github.com/bonitasoft-labs/process-kotlin-dsl-request-loan]
 
 
 
+
+include::chapters/06-embedded-engine.adoc[]
+include::chapters/10-connect-platform.adoc[]
 include::chapters/11-integration-use-cases.adoc[]

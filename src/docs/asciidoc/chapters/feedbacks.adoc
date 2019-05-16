@@ -1,0 +1,37 @@
+== Feedbacks on writing a DSL
+
+
+[%notitle]
+=== Feedbacks
+
+Use Kotlin... 90% of the job is done
+
+[%notitle]
+=== Feedbacks
+
+Write how it should look like first
+
+[source,kotlin]
+----
+process {
+    data {
+        text named "myData"
+    }
+}
+----
+
+
+[%notitle]
+=== Feedbacks
+
+* Don't try to use all features
+[%step]
+* Focus on usability and discovery
+
+
+[%notitle]
+=== Feedbacks
+
+* Throw away your POCs
+[%step]
+* Once your confortable rewrite everything

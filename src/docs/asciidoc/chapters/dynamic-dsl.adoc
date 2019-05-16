@@ -1,0 +1,14 @@
+== "Dynamic DSL"
+
+(name not official)
+
+
+[%notitle]
+=== "Dynamic DSL"
+
+Leverage extension function to create extensible DSLs
+
+[%notitle]
+=== "Dynamic DSL"
+
+image::dynamic-dsl.svg[canvas,size=contain]

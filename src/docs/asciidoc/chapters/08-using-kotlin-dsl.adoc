@@ -1,6 +1,4 @@
-== Process using Kotlin DSL
-
-=== A DSL to create processes
+== A DSL for processes from scratsh
 
 image::Kotlin-logo.svg[width=75,height=75]
 
@@ -8,7 +6,7 @@ image::Kotlin-logo.svg[width=75,height=75]
 
 image::logo_bonita.svg[width=75,height=75]
 
-=== Create the process
+=== The process
 
 image::loan-request.png[width=100%,height=100%]
 

@@ -11,16 +11,10 @@ image::dsl_discovery.png[width=60%,height=60%]
 
 === Speak the language of your domain
 
-[source,kotlin]
-----
-when `a ci job` fails { job ->
-    `send message on slack` {
-        channel = "R&D"
-        message = "The job $job has failed! Fix it :whip:"
-    }
-}
-----
+[%notitle]
+=== Speak the language of your domain
 
+image::process-to-dsl.svg[canvas,size=contain]
 
 
 

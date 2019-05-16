@@ -1,0 +1,16 @@
+== DSL as file
+
+Spring boot configuration
+[source, java]
+----
+@ConditionalOnResource(resources = "classpath:process")
+----
+
+Programmatically execute script
+[source, java]
+----
+ScriptEngine scriptEngine = scriptEngineManager
+            .getEngineByExtension("kts");
+BusinessArchive bar = (BusinessArchive) scriptEngine.eval(content);
+deployBar(apiClient, bar);
+----
