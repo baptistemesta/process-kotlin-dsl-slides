@@ -28,12 +28,9 @@ Inside a Spring boot application
 <div class="paragraph"><p>Baptiste Mesta (@baptistemesta) - Bonitasoft</p></div></div></section>
 <section id="about-me"><h2>About me</h2><div class="ulist"><ul><li class="fragment"><p>Baptiste Mesta</p></li><li class="fragment"><p>Dev @ Bonitasoft for 10 years</p><div class="ulist"><ul><li><p>BPM Execution engine</p></li><li><p>Developer tooling</p></li><li><p>IA/Analytics module</p></li></ul></div></li></ul></div></section>
 <section><section id="bonitasoft"><h2>Bonitasoft</h2></section><section id="bonitasoft-2"><div class="ulist"><ul><li class="fragment"><p>Bonitasoft is the largest provider of open-source Business Process Management, Low-code and Digital Transformation software worldwide</p></li><li class="fragment"><p>Offices in Paris, San Francisco, New York, and R&amp;D in Grenoble France</p></li></ul></div></section></section>
-<section><section id="bonita-platform"><h2>Bonita platform</h2><div class="imageblock" style=""><img src="./images/platform-pres.png" alt="platform pres" width="350" height="350" /></div></section><section id="what-is-it"><div class="ulist"><ul><li class="fragment"><p>Studio to develop processes and applications</p></li><li class="fragment"><p>UIDesigner to develop forms and UIs</p></li><li class="fragment"><p>Engine to execute processes</p></li><li class="fragment"><p>Portal to administrate processes/applications</p></li><li class="fragment"><p>Addons</p></li></ul></div></section></section>
+<section><section id="process-modeling-pre-requisite"><h2>Process modeling pre-requisite</h2></section><section id="pre-requisite-bpmn-in-2-minutes"><h2>Pre-requisite: BPMN in 2 minutes!</h2><div class="imageblock" style=""><img src="./images/BPMN-logo.svg" alt="BPMN logo" width="60%" height="60%" /></div></section><section id="bpmn-process-definition"><h2>BPMN Process definition</h2><div class="imageblock" style=""><img src="./images/BPMN-Order-Process-for-Pizza.png" alt="BPMN Order Process for Pizza" width="60%" height="60%" /></div></section></section>
 <section><section id="our-use-case"><h2>Our use case</h2></section><section id="loan-request-application"><h2>Loan request application</h2><div class="ulist"><ul><li class="fragment"><p>Requester start a request for a loan</p></li><li class="fragment"><p>Validator review this request</p></li><li class="fragment"><p>Validator choose to accept or reject this load</p></li><li class="fragment"><p>If the loan is rejected, we notify the Requester via email</p></li><li class="fragment"><p>If the loan is accepted, the requester need to sign the contract</p></li></ul></div></section><section id="loan-request-application-2"><h2>Loan request application</h2><div class="imageblock" style=""><img src="./images/loan-request.png" alt="loan request" width="100%" height="100%" /></div></section></section>
 <section><section id="application-based-on-business-processes"><h2>Application based on business processes</h2></section><section id="studio-to-design-processes"><h2>Studio to design processes</h2><div class="imageblock" style=""><img src="./images/bonita-devices.png" alt="bonita devices" width="1280" height="700" /></div></section><section id="pros-of-using-the-full-platform"><h2>Pros of using the full platform</h2><div class="ulist"><ul><li class="fragment"><p>Low code development</p></li><li class="fragment"><p>Visual representation of the process</p></li><li class="fragment"><p>Business data editor</p></li><li class="fragment"><p>WYSIWYG editor to create pages and forms</p></li><li class="fragment"><p>Platform to administrate processes / users</p></li><li class="fragment"><p>Out of the box user case list</p></li></ul></div></section><section id="as-a-developer"><h2>As a developer&#8230;&#8203;</h2><div class="ulist"><ul><li class="fragment"><p>I want no setup of a platform (application server)</p></li><li class="fragment"><p>I want everything as code (no clicking)</p></li><li class="fragment"><p>I want my business logic in one place</p></li><li class="fragment"><p>I want it integrated to Spring boot</p></li></ul></div></section><section id="another-approach"><h2>Another approach</h2><div class="paragraph"><p>Embbed processes and Execution engine in our application</p></div></section></section>
-<section id="embedded-engine"><h2>Embedded engine</h2><div class="imageblock" style=""><img src="./images/logo_spring-boot.png" alt="logo spring boot" width="75" height="75" /></div>
-<div class="paragraph"><p>+</p></div>
-<div class="imageblock" style=""><img src="./images/logo_bonita.svg" alt="logo bonita" width="75" height="75" /></div></section>
 <section><section id="process-using-java-api"><h2>Process using java api</h2></section><section id="create-process-1-2"><h2>Create process (1/2?)</h2><pre class="highlight listingblock"><code data-noescape="" class="java language-java">ProcessDefinitionBuilder builder = new ProcessDefinitionBuilder()
 .createNewInstance("RequestLoan", "1.0");
 builder.addContract()
@@ -77,6 +74,24 @@ builder.addAutomaticTask("Notify rejection")
                 "serverUrl+'/reject/'+userId",
                 String.class.getName(),
 [...]</code></pre></section><section id="it-s-possible-but"><h2>It&#8217;s possible, but&#8230;&#8203;</h2><div class="ulist"><ul><li class="fragment"><p>Verbose</p></li><li class="fragment"><p>Not easy to read</p></li></ul></div></section><section id="we-need-something-more-descriptive"><h2>We need something more descriptive</h2></section></section>
+<section><section id="what-is-a-dsl"><h2>What is a DSL?</h2></section><section id="domain-specific-language"><h2>Domain specific language</h2><div class="quoteblock"><blockquote>The basic idea of a domain specific language (DSL) is a computer language that&#8217;s targeted to a particular kind of problem, rather than a general purpose language that&#8217;s aimed at any kind of software problem.</blockquote><div class="attribution">&#8212; Martin Fowler</div></div></section><section id="external-dsls"><h2>External DSLs</h2><div class="ulist"><ul><li class="fragment"><p>Not backed by a language</p></li><li class="fragment"><p>Define your grammar</p></li><li class="fragment"><p>Create your tools to validate</p></li><li class="fragment"><p>"Compile" for your target domain</p></li></ul></div></section><section id="internal-dsls"><h2>Internal DSLs</h2><div class="ulist"><ul><li class="fragment"><p>Backed by a language</p></li><li class="fragment"><p>Limited to the features of the language</p></li><li class="fragment"><p>Re-use tooling of the language</p></li></ul></div></section><section id="we-already-uses-dsls"><h2>We already uses DSLs</h2><div class="paragraph"><p>Spock framework</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="groovy language-groovy">def "should return user given its id and tenant id"() {
+    given:
+    def expectedUser = aUser(new User(id: 1))
+    when:
+    def user = repository.findById(1).get()
+    then:
+    user == expectedUser
+}</code></pre></section><section id="we-already-uses-dsls-2"><h2>We already uses DSLs</h2><div class="paragraph"><p>Gradle DSL</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">plugins {
+    `kotlin-dsl`
+}
+repositories {
+    jcenter()
+}
+dependencies {
+    compile("commons-httpclient:commons-httpclient:3.1")
+}</code></pre></section></section>
 <section><section id="kotlin-dsl"><h2>Kotlin DSL</h2></section><section id="kotlin-lang"><h2>Kotlin lang</h2><div class="paragraph"><p>kotlin is&#8230;&#8203;</p></div>
 <div class="ulist"><ul><li class="fragment"><p>cross-platform</p></li><li class="fragment"><p>statically typed</p></li><li class="fragment"><p>executable on the JVM</p></li><li class="fragment"><p>designed to interoperate fully with Java</p></li><li class="fragment"><p>concise</p></li></ul></div></section><section id="kotlin-makes-writing-dsl-easy"><h2>Kotlin makes writing DSL easy</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">html {
     head {
@@ -87,36 +102,87 @@ builder.addAutomaticTask("Notify rejection")
         p  {+"Some text"}
         a(href = "http://kotlinlang.org") {+"Kotlin"}
     }
-}</code></pre></section><section id="kotlin-makes-writing-dsl-easy-2"><h2>Kotlin makes writing DSL easy</h2><div class="paragraph"><p>Function literals with receiver</p></div>
-<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">fun html(init: HTML.() -&gt; Unit): HTML {
-    val html = HTML()
-    html.init()
+}</code></pre></section></section>
+<section><section id="a-dsl-for-processes-from-scratsh"><h2>A DSL for processes from scratsh</h2><div class="imageblock" style=""><img src="./images/Kotlin-logo.svg" alt="Kotlin logo" width="75" height="75" /></div><div class="paragraph"><p>+</p></div><div class="imageblock" style=""><img src="./images/logo_bonita.svg" alt="logo bonita" width="75" height="75" /></div></section><section id="the-process"><h2>The process</h2><div class="imageblock" style=""><img src="./images/loan-request.png" alt="loan request" width="100%" height="100%" /></div></section></section>
+<section id="kotlin-features-for-dsl"><h2>Kotlin Features for DSL</h2></section>
+<section><section id="function-literals-with-receiver"><h2>Function literals with receiver</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">fun html(init: HTML.() -&gt; Unit): HTML {
+    val html = HTML()  // create the receiver object
+    html.init()        // pass the receiver object to the lambda
     return html
-}
-//gives
-html {
- // ...
-}</code></pre></section><section id="kotlin-makes-writing-dsl-easy-3"><h2>Kotlin makes writing DSL easy</h2><div class="paragraph"><p>Extension Functions</p></div>
-<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">operator fun String.unaryPlus() {
-    //do something with 'this'
-}
-//gives
- title {+"XML encoding with Kotlin"}</code></pre></section><section id="kotlin-makes-writing-dsl-easy-4"><h2>Kotlin makes writing DSL easy</h2><div class="paragraph"><p>infix</p></div>
-<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">infix fun Int.shl(x: Int): Int { ... }
+}</code></pre></section><section id="function-literals-with-receiver-2" data-background-image="./images/function-literal-with-receiver.svg" data-background-size="contain"></section></section>
+<section><section id="dslmarker"><h2>@DslMarker</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">@DslMarker
+annotation class ProcessDSLMarker</code></pre><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">html {
+    head {
+        head {} // should be forbidden
+    }
+    // ...
+}</code></pre></section><section id="dslmarker-2"><pre class="highlight listingblock"><code data-noescape="" class="md language-md">The general rule:
+- an implicit receiver may *belong to a DSL @X*
+    if marked with a corresponding DSL marker annotation
+- two implicit receivers of the same DSL
+    are not accessible in the same scope
+- the closest one wins
+- other available receivers are resolved as usual,
+     but if the resulting resolved call binds to such a receiver,
+     it's a compilation error</code></pre></section></section>
+<section><section id="expression-body"><h2>Expression body</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">fun sum(a: Int, b: Int) = a + b</code></pre></section><section id="expression-body-2"><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">fun data(init: DataContainer.() -&gt; Unit) {
+    DataContainer(builder).init()
+}</code></pre>
+<div class="paragraph"><p>becomes</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">fun data(init: DataContainer.() -&gt; Unit) = DataContainer(builder).init()</code></pre></section></section>
+<section><section id="default-arguments"><h2>Default arguments</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">// Bad
+fun foo() = foo("a")
+fun foo(a: String) { ... }
+
+// Good
+fun foo(a: String = "a") { ... }</code></pre></section><section id="default-arguments-2"><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">automaticTask("name"){
+}</code></pre>
+<div class="paragraph"><p>becomes</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">automaticTask("name")</code></pre></section></section>
+<section><section id="infix-functions"><h2>Infix functions</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">infix fun Int.shl(x: Int): Int { ... }
 
 // calling the function using the infix notation
 1 shl 2
 
 // is the same as
-1.shl(2)</code></pre></section></section>
-<section><section id="process-using-kotlin-dsl"><h2>Process using Kotlin DSL</h2></section><section id="a-dsl-to-create-processes"><h2>A DSL to create processes</h2><div class="imageblock" style=""><img src="./images/Kotlin-logo.svg" alt="Kotlin logo" width="75" height="75" /></div>
-<div class="paragraph"><p>+</p></div>
-<div class="imageblock" style=""><img src="./images/logo_bonita.svg" alt="logo bonita" width="75" height="75" /></div></section><section id="create-the-process"><h2>Create the process</h2><div class="imageblock" style=""><img src="./images/loan-request.png" alt="loan request" width="100%" height="100%" /></div></section></section>
-<section><section id="monitor-and-administrate"><h2>Monitor and Administrate</h2></section><section id="architecture" data-background-image="./images/archi_standalone.svg" data-background-size="contain"></section></section>
-<section><section id="conclusion"><h2>Conclusion</h2><div class="ulist"><ul><li class="fragment"><p>Kotlin <span class="icon"><i class="fa fa-heart"></i></span> DSL</p></li><li class="fragment"><p>Integrate a BPM execution engine is not hard anymore</p></li><li class="fragment"><p>Processes as code is an option for small/medium ones</p></li><li class="fragment"><p>Feedback on the DSL are welcome! (@experimental)</p></li></ul></div></section><section id="thank-you" data-background-image="./images/end.png" data-background-size="cover"><h2>Thank you</h2>
+1.shl(2)</code></pre></section><section id="infix-functions-2"><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">text("type").describedAs("type of the loan")</code></pre>
+<div class="paragraph"><p>becomes</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">text("type") describedAs "type of the loan"</code></pre></section></section>
+<section><section id="extension-function"><h2>Extension function</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">fun MutableList&lt;Int&gt;.swap(index1: Int, index2: Int) {
+    val tmp = this[index1] // 'this' corresponds to the list
+    this[index1] = this[index2]
+    this[index2] = tmp
+}</code></pre></section><section id="extension-function-2"><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">actor("requester") mappedToUser "john"</code></pre>
+<div class="paragraph"><p>becomes</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">"requester" mappedToUser "john"</code></pre></section></section>
+<section><section id="property-with-getter"><h2>Property with getter</h2><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">val isEmpty: Boolean
+    get() = this.size == 0</code></pre></section><section id="property-with-getter-2"><pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">text("type") describedAs "type of the loan"</code></pre>
+<div class="paragraph"><p>becomes</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">text named "type" describedAs "type of the loan"</code></pre></section></section>
+<section><section id="dynamic-dsl"><h2>"Dynamic DSL"</h2><div class="paragraph"><p>(name not official)</p></div></section><section id="dynamic-dsl-2"><div class="paragraph"><p>Leverage extension function to create extensible DSLs</p></div></section><section id="dynamic-dsl-3" data-background-image="./images/dynamic-dsl.svg" data-background-size="contain"></section></section>
+<section id="dsl-as-file"><h2>DSL as file</h2><div class="paragraph"><p>Spring boot configuration</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="java language-java">@ConditionalOnResource(resources = "classpath:process")</code></pre>
+<div class="paragraph"><p>Programmatically execute script</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="java language-java">ScriptEngine scriptEngine = scriptEngineManager
+            .getEngineByExtension("kts");
+BusinessArchive bar = (BusinessArchive) scriptEngine.eval(content);
+deployBar(apiClient, bar);</code></pre></section>
+<section><section id="why-using-a-dsl"><h2>Why using a DSL?</h2></section><section id="validation"><h2>Validation</h2><div class="imageblock" style=""><img src="./images/dsl_validation.png" alt="dsl validation" width="100%" height="100%" /></div></section><section id="discovery"><h2>Discovery</h2><div class="imageblock" style=""><img src="./images/dsl_discovery.png" alt="dsl discovery" width="60%" height="60%" /></div></section><section id="speak-the-language-of-your-domain"><h2>Speak the language of your domain</h2></section><section id="speak-the-language-of-your-domain-2" data-background-image="./images/process-to-dsl.svg" data-background-size="contain"></section></section>
+<section><section id="feedbacks-on-writing-a-dsl"><h2>Feedbacks on writing a DSL</h2></section><section id="feedbacks"><div class="paragraph"><p>Use Kotlin&#8230;&#8203; 90% of the job is done</p></div></section><section id="feedbacks-2"><div class="paragraph"><p>Write how it should look like first</p></div>
+<pre class="highlight listingblock"><code data-noescape="" class="kotlin language-kotlin">process {
+    data {
+        text named "myData"
+    }
+}</code></pre></section><section id="feedbacks-3"><div class="ulist"><ul><li><p>Don&#8217;t try to use all features</p></li><li><p>Focus on usability and discovery</p></li></ul></div></section><section id="feedbacks-4"><div class="ulist"><ul><li><p>Throw away your POCs</p></li><li><p>Once your confortable rewrite everything</p></li></ul></div></section></section>
+<section><section id="conclusion-1-2"><h2>Conclusion (1/2)</h2><div class="ulist"><ul><li class="fragment"><p>Kotlin <span class="icon"><i class="fa fa-heart"></i></span> DSL</p></li><li class="fragment"><p>A nice way to learn Kotlin</p></li><li class="fragment"><p>Easy to write DSL</p></li></ul></div></section><section id="conclusion-2-2"><h2>Conclusion (2/2)</h2><div class="ulist"><ul><li class="fragment"><p>An other way to write our business logic</p></li><li class="fragment"><p>Processes as code is an option for small/medium ones</p></li><li class="fragment"><p>Feedback on the DSL are welcome! (@experimental)</p></li></ul></div></section></section>
+<section id="thank-you" data-background-image="./images/end.png" data-background-size="cover"><h2>Thank you</h2>
 <div class="paragraph"><p><a href="https://www.bonitasoft.com/downloads">bonitasoft.com/downloads</a></p></div>
 <div class="paragraph"><p><a href="https://baptistemesta.github.io/process-kotlin-dsl-slides">baptistemesta.github.io/process-kotlin-dsl-slides</a></p></div>
-<div class="paragraph"><p><a href="https://github.com/baptistemesta/process-kotlin-dsl-request-loan">github.com/baptistemesta/process-kotlin-dsl-request-loan</a></p></div></section></section>
+<div class="paragraph"><p><a href="https://github.com/bonitasoft-labs/process-kotlin-dsl-request-loan">github.com/bonitasoft-labs/process-kotlin-dsl-request-loan</a></p></div></section>
+<section id="embedded-engine"><h2>Embedded engine</h2><div class="imageblock" style=""><img src="./images/logo_spring-boot.png" alt="logo spring boot" width="75" height="75" /></div>
+<div class="paragraph"><p>+</p></div>
+<div class="imageblock" style=""><img src="./images/logo_bonita.svg" alt="logo bonita" width="75" height="75" /></div></section>
+<section><section id="monitor-and-administrate"><h2>Monitor and Administrate</h2></section><section id="architecture" data-background-image="./images/archi_standalone.svg" data-background-size="contain"></section></section>
 <section><section id="integration-use-cases"><h2>Integration use cases</h2></section><section id="standalone-app-with-rest-apis"><h2>Standalone app with REST APIs</h2><div class="paragraph"><p>What we did: add a diagram</p></div></section><section id="standalone-app-with-rest-apis-async-message-communications"><h2>Standalone app with REST APIs + Async message communications</h2><div class="paragraph"><p>In the same diagram, add BPMN message to external things</p></div></section><section id="add-behavior-on-event-based-app"><h2>Add behavior on event based app</h2><div class="paragraph"><p>New diagram with catch BPMN messages that react to events in an application</p></div></section><section id="processes-as-micro-services"><h2>Processes as "micro" services</h2><div class="paragraph"><p>Each application is a process and interact with each others usings BPMN messages</p></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
@@ -250,5 +316,5 @@ Reveal.initialize({
 });</script><!-- this currently shows up at the wrong location in the final index.html which means the style font is not properly applied-->
 
 <div class="footer">
-    <p>#Devoxx #Bonitasoft @baptistemesta</p>
+    <p>#Bonitasoft @baptistemesta</p>
 </div></body></html>
