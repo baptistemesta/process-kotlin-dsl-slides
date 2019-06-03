@@ -107,7 +107,7 @@ automaticTask("name"){
 becomes
 [source,kotlin]
 ----
-automaticTask("name)
+automaticTask("name")
 ----
 
 
