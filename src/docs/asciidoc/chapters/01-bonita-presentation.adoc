@@ -5,4 +5,4 @@
 
 [%step]
 * Bonitasoft is the largest provider of open-source Business Process Management, Low-code and Digital Transformation software worldwide
-* Offices in Paris, San Francisco, New York, and R&D in Grenoble France
+* Offices in Paris, San Francisco, and R&D in Grenoble France

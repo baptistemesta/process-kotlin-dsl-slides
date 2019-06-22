@@ -1,0 +1,8 @@
+== About me
+
+[%step]
+* Baptiste Mesta
+* Dev @ Bonitasoft for 10 years
+** BPM Execution engine
+** Developer tooling
+** IA/Analytics module

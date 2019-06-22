@@ -35,3 +35,9 @@ process {
 * Throw away your POCs
 [%step]
 * Once your confortable rewrite everything
+
+[%notitle]
+=== Feedbacks
+
+A good way to learn kotlin
+

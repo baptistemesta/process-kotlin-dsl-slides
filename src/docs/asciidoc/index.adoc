@@ -16,19 +16,12 @@ ifndef::sourcedir[:sourcedir: ../java]
 Inside a Spring boot application
 +++</h2>+++
 
-Baptiste Mesta (@baptistemesta) - Bonitasoft
+include::chapters/about-me.adoc[]
 
-== About me
-
-[%step]
-* Baptiste Mesta
-* Dev @ Bonitasoft for 10 years
-** BPM Execution engine
-** Developer tooling
-** IA/Analytics module
+//include::chapters/agenda.adoc[]
 
 //intro bonita
-include::chapters/01-bonita-presentation.adoc[]
+//include::chapters/01-bonita-presentation.adoc[]
 
 
 // what is bpmn
@@ -42,7 +35,7 @@ include::chapters/03-the-use-case.adoc[]
 
 include::chapters/04-using-studio.adoc[]
 
-include::chapters/05-using-java-api.adoc[]
+//include::chapters/05-using-java-api.adoc[]
 
 // we need a DSL
 
@@ -70,33 +63,34 @@ include::chapters/feedbacks.adoc[]
 
 
 
-== Conclusion (1/2)
+//== Conclusion (1/2)
+//
+//[%step]
+//* Kotlin icon:heart[] DSL
+//* A nice way to learn Kotlin
+//* Easy to write DSL
 
-[%step]
-* Kotlin icon:heart[] DSL
-* A nice way to learn Kotlin
-* Easy to write DSL
 
+//=== Conclusion (2/2)
 
-=== Conclusion (2/2)
-
-[%step]
-* An other way to write our business logic
-* Processes as code is an option for small/medium ones
-* Feedback on the DSL are welcome! (@experimental)
+//[%step]
+//* An other way to write our business logic
+//* Processes as code is an option for small/medium ones
+//* Feedback on the DSL are welcome! (@experimental)
 
 == Thank you
-image::end.png[background, size=cover]
+image::end_small.png[background, size=cover]
 
-link:https://www.bonitasoft.com/downloads[bonitasoft.com/downloads]
+link:https://github.com/bonitasoft/bonita-engine[bonitasoft/bonita-engine]
 
 link:https://baptistemesta.github.io/process-kotlin-dsl-slides[baptistemesta.github.io/process-kotlin-dsl-slides]
 
 link:https://github.com/bonitasoft-labs/process-kotlin-dsl-request-loan[github.com/bonitasoft-labs/process-kotlin-dsl-request-loan]
 
+@bonitasoft
+@baptistemesta
 
 
-
-include::chapters/06-embedded-engine.adoc[]
-include::chapters/10-connect-platform.adoc[]
-include::chapters/11-integration-use-cases.adoc[]
+//include::chapters/06-embedded-engine.adoc[]
+//include::chapters/10-connect-platform.adoc[]
+//include::chapters/11-integration-use-cases.adoc[]

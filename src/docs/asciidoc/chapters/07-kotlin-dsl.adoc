@@ -3,7 +3,6 @@
 === Kotlin lang
 
 kotlin is...
-[%step]
 * cross-platform
 * statically typed
 * executable on the JVM

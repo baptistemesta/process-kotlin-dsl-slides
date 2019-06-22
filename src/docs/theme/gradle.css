@@ -88,12 +88,16 @@ body {
 .title h1, .preamble p {
     color: white;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.6em;
 }
 
 .title h2 {
     color: white;
-    font-size: 1.6em;
+    font-size: 1.3em;
+}
+.title h3 {
+    color: white;
+    font-size: 1.3em;
 }
 
 .title p {

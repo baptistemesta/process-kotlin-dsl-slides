@@ -9,20 +9,11 @@ The basic idea of a domain specific language (DSL) is a computer language that's
 
 === External DSLs
 
-[%step]
-* Not backed by a language
-* Define your grammar
-* Create your tools to validate
-* "Compile" for your target domain
-
+aka _"Create a new language from scratsh"_
 
 === Internal DSLs
 
-[%step]
-* Backed by a language
-* Limited to the features of the language
-* Re-use tooling of the language
-
+aka _"I don't want to spend 2 months on that"_
 
 === We already uses DSLs
 

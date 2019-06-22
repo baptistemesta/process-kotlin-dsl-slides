@@ -17,12 +17,8 @@ image::bonita-devices.png[]
 
 === As a developer...
 
-[%step]
-* I want no setup of a platform (application server)
-* I want everything as code (no clicking)
-* I want my business logic in one place
-* I want it integrated to Spring boot
+I want everything as code in one place
 
 === Another approach
 
-Embbed processes and Execution engine in our application
+A *DSL* to code processes and execute them using an *Embedded engine*
