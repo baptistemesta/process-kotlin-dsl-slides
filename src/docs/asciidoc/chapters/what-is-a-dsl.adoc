@@ -9,7 +9,7 @@ The basic idea of a domain specific language (DSL) is a computer language that's
 
 === External DSLs
 
-aka _"Create a new language from scratsh"_
+aka _"Create a new language from scratch"_
 
 === Internal DSLs
 
